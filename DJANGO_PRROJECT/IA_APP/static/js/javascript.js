@@ -6,7 +6,12 @@ $(function() {
             messagesCount++;
             messageId="message_"+messagesCount;
             $("#messagesBox").append("<div class='userMessage' id='"+messageId+"'>"+$(this).val() + "</div>");
-            $("#messagesBox").append("<div class='botMessage'>Hello John</div>");
+            let reply_text='';
+            getBotReply($(this).val(),function(result){
+            $("#messagesBox").append("<div class='botMessage'>"+result+"</div>");
+            });
+//            }
+
     		$('#messagesBox ').animate({
         	scrollTop: $('#'+messageId).position().top
     	}, 'slow');
@@ -16,13 +21,14 @@ $(function() {
     });
 });
 
-function getBotReply(str) {
+function getBotReply(str,callback) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+    var reply = JSON.parse(this.responseText);
+      return callback(reply.reply);
     }
   };
-  xhttp.open("POST", "bot_response/?text="+, true);
+  xhttp.open("GET", "bot_response/?text="+str, true);
   xhttp.send();
 }
