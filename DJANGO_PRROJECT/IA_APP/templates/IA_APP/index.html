@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Aiml Chatbot</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+	{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="javascript.js"></script>
+<script type="text/javascript" src={% static "js/javascript.js" %}></script>
 </head>
 <body>
 	<div class="chatBox">
