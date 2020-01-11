@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="674fe7ca-f0f2-4150-b737-e6321ec38a53" name="Default Changelist" comment="" />
+    <list default="true" id="c50a9d80-565f-4a3e-a7ce-cbe145d307f0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1VnvlvVza61atEFdyYBlQoWeIIO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../s13.py" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\python\IA_PROJECT\DJANGO_PRROJECT\IA_APP" />
-    </key>
-  </component>
+  <component name="ProjectId" id="1WFAb11aKi2pXI80TBGYHEgC9ny" />
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -43,12 +31,23 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="674fe7ca-f0f2-4150-b737-e6321ec38a53" name="Default Changelist" comment="" />
-      <created>1577901827344</created>
+      <changelist id="c50a9d80-565f-4a3e-a7ce-cbe145d307f0" name="Default Changelist" comment="" />
+      <created>1578735037406</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1577901827344</updated>
+      <updated>1578735037406</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
