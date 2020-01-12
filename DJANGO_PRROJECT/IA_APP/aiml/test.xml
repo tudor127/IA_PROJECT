@@ -12,5 +12,11 @@
             I'm a bot, silly!
         </template>
     </category>
+    <category>
+        <pattern>*</pattern>
+        <template>
+            I don't understand!
+        </template>
+    </category>
 
 </aiml>
