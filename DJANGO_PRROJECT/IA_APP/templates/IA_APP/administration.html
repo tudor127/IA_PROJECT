@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Aiml Chatbot</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="javascript.js"></script>
+	{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}>
+<link rel="stylesheet" type="text/css" href={% static "css/administration.css" %}>
 </head>
 <body>
-	<div class="chatBox">
-		<div class="top"></div>
-		<div class="messagesBox" id="messagesBox"></div>
-		<div class="messageInput">
-			<form method="post">
-			<textarea type="text" name="message" placeholder="Type a message here..." id="messageInput" rows="2"></textarea>
-			</form>
-		</div>
+	<div class="topBar">
+		<div class="logo"><a href="/" >Aiml ChatBot</a></div>
+		<div class="logOut"><a href="/logout" ><button>Logout</button></a></div>
 	</div>
+	<div class="templatesBox">
+		<div class="templateTitle">
+			<div class="title">Templates</div>
+		</div>
+
+		<div class="templateBox">
+			<div class="templateName">Default</div>
+			<div class="editButton">
+				<div class="editText">Edit</div>
+			</div>
+			<div class="editButton" id="view">
+				<div class="editText">View</div>
+			</div>
+		</div>
+
+		<div class="templateBox"></div>
+		<div class="templateBox"></div>
+		<div class="templateBox"></div>
+		<div class="templateBox" id="plus"><img src={% static "img/plus.png" %}></div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src={% static "js/javascript.js" %}></script>
 </body>
 </html>

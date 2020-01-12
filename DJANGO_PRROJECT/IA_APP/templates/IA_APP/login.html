@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aiml Chatbot</title>
+	{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}>
+<link rel="stylesheet" type="text/css" href={% static "css/administration.css" %}>
+</head>
+<body>
+    	<div class="topBar">
+		<div class="logo"><a href="/"> Aiml ChatBot </a> </div>
+	   </div>
+        <div id="loginBox">
+        {% if logout %}
+    <script>
+        window.location.href = "/login";
+    </script>
+    {% endif %}
+    {% if not_logged %}
+            <p class="error">Username or password is incorrect</p>
+    {% else %}
+    {% if logged %}
+    <script>
+        window.location.href = "/login";
+    </script>
+    {% endif %}
+    {% endif %}
+<form method="GET" action="/login">
+    <input type="text" placeholder="username" name="username" required>
+    <input type="password" placeholder="password" name="password" required>
+    <button type="submit">Login</button>
+</form>
+</div>
+</body>
+</html>

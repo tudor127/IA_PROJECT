@@ -32,3 +32,44 @@ function getBotReply(str,callback) {
   xhttp.open("GET", "bot_response/?text="+str, true);
   xhttp.send();
 }
+
+function getCategories(callback) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    var categories = JSON.parse(this.responseText);
+      return callback(categories);
+    }
+  };
+  xhttp.open("GET", "get_category", true);
+  xhttp.send();
+}
+
+function checkCategory(id){
+    let category=document.querySelector('#'+id);
+  if(category.dataset.checked=="true"){
+    category.style.background="#888";
+    category.style.border="3px solid transparent";
+    category.style.opacity=".45";
+    category.dataset.checked="false";
+  }
+  else{
+    category.style.background="#41ac8e";
+    category.style.border="3px dotted #16dcf1";
+    category.style.opacity="1";
+    category.dataset.checked="true";
+  }
+}
+
+
+var categories;
+getCategories(function(result){
+categories=result;
+var index=0;
+if(Object.keys(categories).length>0){
+    for (key in categories) {
+        document.getElementById('categories').innerHTML+="<div data-checked='false' id='cat_"+index+"' class='category' onclick='checkCategory(this.id)'>"+categories[key]+"</div>";
+        index++;
+}
+}
+});

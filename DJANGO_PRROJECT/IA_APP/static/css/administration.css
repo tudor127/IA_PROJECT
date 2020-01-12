@@ -1,0 +1,137 @@
+.topBar{
+	width: 100%;
+	height: 50px;
+	background: rgb(31, 115, 183);
+}
+
+html,body{
+margin:0px;
+}
+
+.logo{
+	height: 	100%;
+	width: 	200px;
+	text-align: 	center;
+	display: inline-block;
+	margin-top: 15px;
+	color: 	white;
+
+}
+
+.logOut a{
+color:#fff;
+text-decoration:none;
+}
+
+.logo a{
+	text-decoration:none;
+	color:#fff;
+}
+
+.logOut{
+	width: 	80px;
+	height: 35px;
+	display: block;
+	float: 	right;	
+	margin-top: 	7.5px;
+	margin-right: 	10px;
+	border-radius: 	10px;
+
+}
+
+
+.logOut button{
+	width: 	80px;
+	height: 35px;
+	display: block;
+	background: #bd1d1d;
+	border-radius: 	10px;
+	border: 	none;
+	color: white;
+}
+
+.logOut button:hover{
+	background:#9a1818;
+}
+
+.templateTitle{
+	width: 100%;
+	background: rgb(31, 115, 183);
+	height: 10%;
+	text-align: 	center;
+	display: inline-block;
+	color: 	white;
+}
+
+.title{
+	margin-top: 	10px;
+	font-size: 	30px;
+}
+
+.templatesBox{
+	height: 90%;
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 0px;
+	display: block;
+	border: 1px solid#aaa;
+	border-radius: 16px;
+	margin-top: 1.8%;
+	overflow: hidden;
+	background:#fff;
+}
+
+.templateBox{
+	height: 200px;
+	width: 180px;
+	display: 	block;
+	background: 	#eee;
+	border-radius: 	16px;
+	margin-top: 	40px;
+	margin-left: 	62px;
+	float: 	left;	
+
+}
+
+.templateBox img{
+	width: 	130px;
+	height: 130px;
+	display: block;
+	margin:0 auto;
+	margin-top: 35px;
+}
+
+#plus:hover{
+	background: yellow;
+}
+
+.templateName{
+	width: 	100%;
+	height: 	50px;
+	margin-top: 	30px;
+	text-align: center	;
+	font-family: 	Georgia;
+	font-size: 	25px;
+}
+
+.editButton{
+	height: 40px;
+	width: 80%;
+	display: 	block;
+	background: 	red;
+	margin: 0 auto;
+	border-radius: 	10px;
+	color: 	white;
+	text-align: 	center;
+	line-height: 	40px;
+}
+
+#view{
+	background:green;
+}
+
+.editText{
+	display: 	block;
+	margin:0 auto;
+	margin-top: 	10px;
+}

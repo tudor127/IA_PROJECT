@@ -2,6 +2,11 @@ from django.urls import path
 from . import views
 import aiml
 urlpatterns=[
-    path('',views.index , name = 'home-page'),
-    path('bot_response/',views.bot_response , name = 'bot_response'),
+    path('',views.index ),
+    path('bot_response/',views.bot_response ),
+    path('get_category/',views.get_category),
+    path('get_aiml/',views.get_aiml),
+    path('administration/',views.administration ),
+    path('login/', views.login),
+    path('logout/', views.logout)
 ]
