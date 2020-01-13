@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 import aiml
 import os
 import xml.etree.ElementTree as ET
+import json
 def index(req):
     logged=req.COOKIES.get('logged', 'false')
     if logged=="true":
@@ -63,9 +64,9 @@ def bot_response(request):
 
 def toggle_category(request):
     if request.method == 'POST':
-        print (request.session['categories'])
-        category = request.POST.get('category', '')
-        if os.path.isfile('IA_APP//aiml//' + category):
+        j = json.loads(request.body.decode())
+        category = j['category']
+        if os.path.isfile(os.path.join('IA_APP', 'aiml', category)):
             if not request.session.get('categories'):
                 request.session['categories'] = ['test.xml']
             l = request.session['categories']
@@ -74,8 +75,6 @@ def toggle_category(request):
             else:
                 l.append(category)
             request.session['categories'] = l
-            print (request.session['categories'])
-            # return JsonResponse(dict(zip([str(x) for x in range(len(request.session['categories']))], request.session['categories'])))
             return JsonResponse({'result': 'success'})
         else:
             return JsonResponse({'result': 'file_not_found'})
