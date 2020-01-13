@@ -1,16 +1,28 @@
-<aiml version="1.0.1" encoding="UTF-8">
-<!-- basic_chat.aiml -->
-    <category>
-        <pattern>HELLO</pattern>
-        <template>
-            Well, hello!
-        </template>
-    </category>
-    <category>
-        <pattern>WHAT ARE YOU</pattern>
-        <template>
-            I'm a bot, silly!
-        </template>
-    </category>
-
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>HELLO</pattern>
+  <template>
+      <random>
+        <li>well hello</li>
+      <li>heey</li>
+      <li>hello!!</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>how are you?</pattern>
+  <template>
+      <random>
+        <li>i'm fine</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>ask me a question</pattern>
+  <template>
+      <random>
+        <li>what is your favorite book?</li>
+      </random>
+    </template>
+  </category>
 </aiml>

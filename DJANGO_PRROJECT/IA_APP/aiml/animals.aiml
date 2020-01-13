@@ -1,0 +1,11 @@
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>what is you favorite animal?</pattern>
+  <template>
+      <random>
+        <li>cat</li>
+      <li>dog</li>
+      </random>
+    </template>
+  </category>
+</aiml>

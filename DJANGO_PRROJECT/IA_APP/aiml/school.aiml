@@ -1,0 +1,19 @@
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>7 plus 7?</pattern>
+  <template>
+      <random>
+        <li>14</li>
+      <li>77</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>square of 6?</pattern>
+  <template>
+      <random>
+        <li>36</li>
+      </random>
+    </template>
+  </category>
+</aiml>

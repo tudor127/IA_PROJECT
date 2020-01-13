@@ -1,0 +1,12 @@
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>tell me a car brand</pattern>
+  <template>
+      <random>
+        <li>bmw</li>
+      <li>Porsche</li>
+      <li>renault</li>
+      </random>
+    </template>
+  </category>
+</aiml>

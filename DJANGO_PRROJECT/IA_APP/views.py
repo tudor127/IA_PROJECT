@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import redirect
 import aiml
+import json
 import os
 import xml.etree.ElementTree as ET
 def index(req):
@@ -119,13 +121,16 @@ def get_aiml_content(file):
         root = ET.parse(filepath)
         x = {}
         for category in root.findall('category'):
-            pattern = category.find('pattern').text.strip()
+            if category.find('pattern').text:
+                pattern = category.find('pattern').text.strip()
             if not list(category.find('template')):
-                template = category.find('template').text.strip()
+                if category.find('template').text:
+                    template = [category.find('template').text.strip()]
             else:
                 variante = []
                 for el in category.find('template')[0]:
-                    variante.append(el.text.strip())
+                    if el.text:
+                        variante.append(el.text.strip())
                 template = variante
             x[pattern] = template
         return x
@@ -147,3 +152,58 @@ def administration(request):
         return render(request, 'IA_APP/administration.html',{'categories':categories,'category':category})
     else:
         return render(request, 'IA_APP/login.html')
+
+
+def indent(elem, level=0):
+    i = "\n" + level*"  "
+    j = "\n" + (level-1)*"  "
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + "  "
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for subelem in elem:
+            indent(subelem, level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = j
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = j
+    return elem
+def conv(data,output):
+    #root element
+    aiml = ET.Element('aiml', {'version':'1.0','encoding':'utf-8'})
+
+    for key in data:
+        category = ET.SubElement(aiml,'category')
+
+        pattern = ET.SubElement(category, 'pattern')
+        pattern.text=key
+
+        template = ET.SubElement(category, 'template')
+
+        random = ET.SubElement(template, 'random')
+        if (type(data[key]) == list):
+            for index in data[key]:
+                li = ET.SubElement(random, 'li')
+                li.text=index
+        else:
+            li = ET.SubElement(random, 'li')
+            li.text = data[key]
+
+
+    #write to file
+    tree = ET.ElementTree(indent(aiml))
+    tree.write(output)
+
+# conv("input.json","output.aiml")
+
+def edit_aiml(request):
+    result="failed"
+    if request.method == 'POST':
+        filename = request.POST.get('file', '')
+        js = request.POST.get('json', '')
+        json_text=json.loads(js)
+        conv(json_text,"IA_APP\\aiml\\"+filename)
+        result="succes"
+    return JsonResponse({"result":result})
