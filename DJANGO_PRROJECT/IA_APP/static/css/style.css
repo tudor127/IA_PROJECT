@@ -89,6 +89,15 @@ color:
 #fff;
 cursor:pointer;
 }
+#categoryBox{
+    width: 1000px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 325px;
+    margin-top: 20px;
+    height: 90%;
+    }
 
 #loginBox .error{
     width: 90%;
@@ -108,6 +117,59 @@ color:
 font-weight: bold;
 font-size: 16px;
 }
+
+.cat_content{
+    width: 960px;
+    height: 86%;
+    /* margin-top: 2%; */
+    margin: 1% auto;
+    overflow: auto;
+    display: none;
+    /* margin-top: 3%; */
+    background: #eee;
+    /* padding-top: 20px; */
+    padding: 20PX;
+    BOX-SIZING: BORDER-BOX;
+    border-radius: 10px;
+}
+
+.save-btn{
+display:none;
+}
+.save-btn:nth-of-type(1){
+display:block;
+}
+.questionBox{
+width: 100%;
+margin: 10px auto;
+    }
+ .questionBox label{
+     width: 30px;
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    height: 33px;
+    line-height: 34px;
+    }
+ .questionBox textarea{
+     width: 865px;
+    resize: vertical;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    }
+
+.cat_content:nth-of-type(1){
+display:block;
+}
+
+#categoryTitle{
+    margin: 7px auto;
+    text-align: center;
+    font-size: 24px;
+    text-transform: capitalize;
+    }
 
 .messagesBox{
 width: 100%;

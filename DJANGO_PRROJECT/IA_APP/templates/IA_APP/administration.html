@@ -4,35 +4,68 @@
     <meta charset="UTF-8">
     <title>Aiml Chatbot</title>
 	{% load static %}
-<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}>
-<link rel="stylesheet" type="text/css" href={% static "css/administration.css" %}>
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}/>
+<link rel="stylesheet" type="text/css" href={% static "css/administration.css" %}/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src={% static "js/admin.js" %}></script>
+	<script type="text/javascript">
+function showCD(id,value,key){
+var cats=document.getElementsByClassName('cat_content');
+var btns=document.getElementsByClassName('save-btn');
+for(var j=0;i<btns.length;j++){
+if(btns[j].id!=('save_btn_'+key)){
+btns[j].style.display='none';
+}
+else{
+btns[j].style.display='block';
+}
+}
+for(var i=0;i<cats.length;i++){
+if(cats[i].id!=id){
+cats[i].style.display='none';
+}
+else{
+cats[i].style.display='block';
+document.getElementById('categoryTitle').innerHTML=value;
+
+}
+}
+}
+</script>
+
 </head>
 <body>
 	<div class="topBar">
 		<div class="logo"><a href="/" >Aiml ChatBot</a></div>
 		<div class="logOut"><a href="/logout" ><button>Logout</button></a></div>
 	</div>
-	<div class="templatesBox">
+	<div class="templatesBox" >
 		<div class="templateTitle">
 			<div class="title">Templates</div>
 		</div>
-
-		<div class="templateBox">
-			<div class="templateName">Default</div>
-			<div class="editButton">
-				<div class="editText">Edit</div>
-			</div>
-			<div class="editButton" id="view">
-				<div class="editText">View</div>
-			</div>
-		</div>
-
-		<div class="templateBox"></div>
-		<div class="templateBox"></div>
-		<div class="templateBox"></div>
+		<div id="templatesBox">
 		<div class="templateBox" id="plus"><img src={% static "img/plus.png" %}></div>
+			{% if categories %}
+			{% for key,value in categories.items %}
+			<div class="templateBox" onclick="showCD('cd_{{key}}','{{value}}','{{key}}')"><div class="templateName">{{value}}</div></div>
+			{% endfor %}
+			{% endif %}
+		</div>
 	</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src={% static "js/javascript.js" %}></script>
+	<div id="categoryBox">
+			<h1 id="categoryTitle">{{categories.0}}</h1>
+			{% for key,value in category.items %}
+			<div  class="cat_content" id="cd_{{key}}">
+				{% for question,answer in value.items %}
+				<div class="questionBox">
+					<label>Q:</label><textarea rows="1" class="questionInput">{{question}}</textarea><br>
+					<label>R:</label><textarea rows="1" class="responseInput">{{answer}}</textarea><br>
+				</div>
+				{%endfor%}
+			</div>
+		    <button class="save-btn" id="save_btn_{{key}}">save</button>
+			{% endfor %}
+	</div>
+
 </body>
 </html>

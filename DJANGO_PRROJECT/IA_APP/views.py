@@ -40,6 +40,7 @@ class ChatBot:
         self.learn(request)
 
     def learn(self, request):
+        # del request.session['categories']
         if not request.session.get('categories'):
             request.session['categories'] = ['test.xml']
         categories = request.session['categories']
@@ -111,10 +112,38 @@ def get_aiml(request):
     else:
         return JsonResponse({})
 
+def get_aiml_content(file):
+    filename = file
+    filepath = os.path.join("IA_APP\\aiml", filename)
+    if os.path.isfile(filepath):
+        root = ET.parse(filepath)
+        x = {}
+        for category in root.findall('category'):
+            pattern = category.find('pattern').text.strip()
+            if not list(category.find('template')):
+                template = category.find('template').text.strip()
+            else:
+                variante = []
+                for el in category.find('template')[0]:
+                    variante.append(el.text.strip())
+                template = variante
+            x[pattern] = template
+        return x
+    else:
+        return {}
 
 def administration(request):
     logged=request.COOKIES.get('logged', 'false')
+    categories={}
+    category={}
+    index=0;
+    for root, dirs, files in os.walk("IA_APP\\aiml"):
+        for name in files:
+            if name.split(".")[-1] == 'aiml':
+                categories[index] = name.split(".")[0]
+                category[index] = get_aiml_content(name)
+                index+=1
     if logged=="true":
-        return render(request, 'IA_APP/administration.html')
+        return render(request, 'IA_APP/administration.html',{'categories':categories,'category':category})
     else:
         return render(request, 'IA_APP/login.html')
