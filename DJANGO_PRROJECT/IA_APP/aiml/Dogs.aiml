@@ -1,11 +1,10 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>what is you favorite animal?</pattern>
+    <pattern>how many legs has a dog?</pattern>
   <template>
       <random>
-        <li>horse
-</li>
-      <li>dog</li>
+        <li>4</li>
+      <li>i don't know</li>
       </random>
     </template>
   </category>

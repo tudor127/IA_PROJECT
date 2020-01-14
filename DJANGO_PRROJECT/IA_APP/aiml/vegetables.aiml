@@ -8,4 +8,12 @@
       </random>
     </template>
   </category>
+<category>
+    <pattern>do you like tomates?</pattern>
+  <template>
+      <random>
+        <li>i love them</li>
+      </random>
+    </template>
+  </category>
 </aiml>

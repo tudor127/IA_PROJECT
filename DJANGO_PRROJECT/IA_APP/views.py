@@ -42,9 +42,10 @@ class ChatBot:
         self.learn(request)
 
     def learn(self, request):
+        request.session['categories'] = ['test.xml', 'test.aiml']
         # del request.session['categories']
         if not request.session.get('categories'):
-            request.session['categories'] = ['test.xml']
+            request.session['categories'] = ['test.xml','test.aiml']
         categories = request.session['categories']
         for i in categories:
             self.kernel.learn(os.path.join("IA_APP\\aiml", i))
@@ -65,23 +66,25 @@ def bot_response(request):
 
 
 def toggle_category(request):
+    request.session['categories'] = ['test.xml', 'test.aiml']
     if request.method == 'POST':
         print (request.session['categories'])
-        category = request.POST.get('category', '')
-        if os.path.isfile('IA_APP//aiml//' + category):
-            if not request.session.get('categories'):
-                request.session['categories'] = ['test.xml']
-            l = request.session['categories']
-            if category in request.session['categories']:
-                l.remove(category)
-            else:
-                l.append(category)
-            request.session['categories'] = l
-            print (request.session['categories'])
-            # return JsonResponse(dict(zip([str(x) for x in range(len(request.session['categories']))], request.session['categories'])))
-            return JsonResponse({'result': 'success'})
-        else:
-            return JsonResponse({'result': 'file_not_found'})
+        # category = request.POST.get('category', '')
+        # if os.path.isfile('IA_APP//aiml//' + category):
+        #     if not request.session.get('categories'):
+        #         request.session['categories'] = ['test.xml','test.aiml']
+        #     l = request.session['categories']
+        #     if category in request.session['categories']:
+        #         l.remove(category)
+        #     else:
+        #         l.append(category)
+        #     request.session['categories'] = l
+        #     print (request.session['categories'])
+        #     # return JsonResponse(dict(zip([str(x) for x in range(len(request.session['categories']))], request.session['categories'])))
+        #     return JsonResponse({'result': 'success'})
+        # else:
+        #     return JsonResponse({'result': 'file_not_found'})
+    return JsonResponse({'result':request.session['categories']})
 
 
 def get_category(request):
@@ -202,6 +205,8 @@ def edit_aiml(request):
     result="failed"
     if request.method == 'POST':
         filename = request.POST.get('file', '')
+        if filename.strip()=='.aiml':
+            return JsonResponse({"result":'Invalid Title'})
         js = request.POST.get('json', '')
         json_text=json.loads(js)
         conv(json_text,"IA_APP\\aiml\\"+filename)

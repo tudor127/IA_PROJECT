@@ -45,7 +45,7 @@ document.getElementById('categoryTitle').innerHTML=value;
 			<div class="title">Templates</div>
 		</div>
 		<div id="templatesBox">
-		<div class="templateBox" id="plus"><img src={% static "img/plus.png" %}></div>
+		<div class="templateBox" id="template_plus"   onclick="showCD('cd_plus','Add new template','plus')" ><img src={% static "img/plus.png" %} data-file=""></div>
 			{% if categories %}
 			{% for key,value in categories.items %}
 			<div class="templateBox" onclick="showCD('cd_{{key}}','{{value}}','{{key}}')" id="template_{{key}}" data-file="{{value}}.aiml"><div class="templateName">{{value}}</div></div>
@@ -54,7 +54,17 @@ document.getElementById('categoryTitle').innerHTML=value;
 		</div>
 	</div>
 	<div id="categoryBox">
-			<h1 id="categoryTitle">{{categories.0}}</h1>
+			<h1 id="categoryTitle">Add new template</h1>
+			<div  class="cat_content" id="cd_plus" data-key="plus">
+					<input type="text" id="new_template_title" placeholder="Template's title" autocomplete="off" onkeyup="document.getElementById('template_plus').dataset.file=this.value+'.aiml';" />
+					<div class="questionBox">
+					<label>Q:</label><textarea rows="1" autocomplete="off" placeholder="Insert question..." class="questionInput"></textarea><br>
+                    <label>R:</label><textarea placeholder="Insert response..."  class="responseInput" autocomplete="off"></textarea><br>
+                    <button onclick="addResponse(this.parentNode,this)" class="addResponseBtn">+Add response</button>
+				</div>
+				<button onclick="addQuestion(this.parentNode,this)" class="addResponseBtn">+Add question</button>
+			</div>
+			 <button class="save-btn" id="save_btn_plus"  onclick="saveAiml('cd_plus')">save</button>
 			{% for key,value in category.items %}
 			<div  class="cat_content" id="cd_{{key}}" data-key="{{key}}">
 				{% for question,answer in value.items %}
@@ -136,6 +146,7 @@ function addQuestion(parent,el){
 	parent.insertBefore(newBr,el);
 	parent.insertBefore(newLabel,newNode);
 }
+
 </script>
 </body>
 </html>

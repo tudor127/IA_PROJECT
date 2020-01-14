@@ -3,9 +3,18 @@
     <pattern>tell me a car brand</pattern>
   <template>
       <random>
-        <li>bmw</li>
+        <li>BMW</li>
       <li>Porsche</li>
-      <li>renault</li>
+      <li>Dacia</li>
+      <li>Lada</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>What is mercedes?</pattern>
+  <template>
+      <random>
+        <li>is a car brand</li>
       </random>
     </template>
   </category>

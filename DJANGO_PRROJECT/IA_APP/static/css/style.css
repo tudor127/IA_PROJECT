@@ -172,6 +172,8 @@ clear:both;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;
+    border: 1px solid #aaa;
+height: 40px;
     }
 
 .cat_content:nth-of-type(1){

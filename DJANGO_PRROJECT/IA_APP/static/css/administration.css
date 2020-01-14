@@ -8,6 +8,14 @@ html,body{
 margin:0px;
 }
 
+#new_template_title{
+width: 300px;
+    margin-left: 31px;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    }
+
 .logo{
 	height: 	100%;
 	width: 	200px;
