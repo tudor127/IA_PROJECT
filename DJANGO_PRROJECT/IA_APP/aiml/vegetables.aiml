@@ -1,6 +1,6 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>do you like carrots?</pattern>
+    <pattern>DO YOU LIKE CARROTS</pattern>
   <template>
       <random>
         <li>no</li>
@@ -9,10 +9,10 @@
     </template>
   </category>
 <category>
-    <pattern>do you like tomates?</pattern>
+    <pattern>DO YOU LIKE TOMATES</pattern>
   <template>
       <random>
-        <li>i love them</li>
+        <li>i love them !</li>
       </random>
     </template>
   </category>

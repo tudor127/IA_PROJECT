@@ -69,10 +69,10 @@ document.getElementById('categoryTitle').innerHTML=value;
 			<div  class="cat_content" id="cd_{{key}}" data-key="{{key}}">
 				{% for question,answer in value.items %}
 				<div class="questionBox">
-					<label>Q:</label><textarea rows="1" placeholder="Insert question..." class="questionInput">{{question}}</textarea><br>
+					<label>Q:</label><textarea rows="1" autocomplete="off" placeholder="Insert question..." class="questionInput">{{question}}</textarea><br>
                     {% if answer %}
                     {% for el in answer %}
-                    <label>R:</label><textarea placeholder="Insert response..."  class="responseInput">{{el}}</textarea><br>
+                    <label>R:</label><textarea autocomplete="off" placeholder="Insert response..."  class="responseInput">{{el}}</textarea><br>
                     {% endfor %}
                     {% endif %}
                     <button onclick="addResponse(this.parentNode,this)" class="addResponseBtn">+Add response</button>
@@ -91,7 +91,10 @@ function parseAiml(cd_id){
 	var questions=cat.getElementsByClassName('questionBox');
 	var aiml={};
 	for (var i=0;i<questions.length;i++){
-		question=questions[i].getElementsByClassName('questionInput')[0].value;
+		question=questions[i].getElementsByClassName('questionInput')[0].value.toUpperCase();
+		question=question.replace("?", "");
+		question=question.replace("!", "");
+		question=question.replace(".", "");
 		if(question.trim()!=''){
 		answers=[];
 		answs=questions[i].getElementsByClassName('responseInput');
@@ -119,7 +122,7 @@ function saveAiml(cd_id) {
   xhttp.open("POST", "http://127.0.0.1:8000/edit_aiml/", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("file="+file_name+"&json="+JSON.stringify(aiml));
-  console.log(aiml);
+  // console.log(aiml);
 }
 
 function addResponse(parent,el){

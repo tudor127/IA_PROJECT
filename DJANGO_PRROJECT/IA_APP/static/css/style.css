@@ -274,6 +274,7 @@ padding-bottom: 10px;
 
 }
 
+
 .content{
 	width: 853px;
 	margin: 0px auto;
@@ -363,4 +364,10 @@ margin-bottom: 0px;
 /* Handle on hover */
 .chatBox::-webkit-scrollbar-thumb:hover {
   background: rgb(31, 115, 183);
-} 
+}
+
+.active_class{
+    background:#41ac8e;
+    border:3px dotted #16dcf1;
+    opacity:1;
+}

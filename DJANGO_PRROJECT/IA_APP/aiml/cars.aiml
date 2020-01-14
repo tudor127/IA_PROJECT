@@ -1,17 +1,14 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>tell me a car brand</pattern>
+    <pattern>TELL ME A CAR BRAND</pattern>
   <template>
       <random>
-        <li>BMW</li>
-      <li>Porsche</li>
-      <li>Dacia</li>
-      <li>Lada</li>
+        <li>Honda ciuvic</li>
       </random>
     </template>
   </category>
 <category>
-    <pattern>What is mercedes?</pattern>
+    <pattern>WHAT IS MERCEDES</pattern>
   <template>
       <random>
         <li>is a car brand</li>

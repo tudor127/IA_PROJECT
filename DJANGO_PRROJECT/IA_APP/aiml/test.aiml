@@ -10,18 +10,26 @@
     </template>
   </category>
 <category>
-    <pattern>how are you?</pattern>
+    <pattern>HOW ARE YOU</pattern>
   <template>
       <random>
-        <li>i'm fine</li>
+        <li>i'm fine!!</li>
       </random>
     </template>
   </category>
 <category>
-    <pattern>ask me a question</pattern>
+    <pattern>ASK ME A QUESTION</pattern>
   <template>
       <random>
         <li>what is your favorite book?</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>OK</pattern>
+  <template>
+      <random>
+        <li>fine</li>
       </random>
     </template>
   </category>

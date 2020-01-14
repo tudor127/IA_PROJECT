@@ -1,6 +1,6 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>what is python?</pattern>
+    <pattern>WHAT IS PYTHON</pattern>
   <template>
       <random>
         <li>is a programming language</li>

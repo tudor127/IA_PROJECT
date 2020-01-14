@@ -1,6 +1,6 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>how many legs has a dog?</pattern>
+    <pattern>HOW MANY LEGS HAS A DOG</pattern>
   <template>
       <random>
         <li>4</li>

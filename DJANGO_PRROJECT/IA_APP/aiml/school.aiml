@@ -1,6 +1,6 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>7 plus 7?</pattern>
+    <pattern>7 PLUS 7?</pattern>
   <template>
       <random>
         <li>14</li>
@@ -9,7 +9,7 @@
     </template>
   </category>
 <category>
-    <pattern>square of 6?</pattern>
+    <pattern>SQUARE OF 6?</pattern>
   <template>
       <random>
         <li>36</li>

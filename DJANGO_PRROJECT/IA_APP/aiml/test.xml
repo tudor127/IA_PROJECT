@@ -13,6 +13,13 @@
         </template>
     </category>
     <category>
+        <pattern>OK</pattern>
+        <template>
+            no!
+        </template>
+    </category>
+
+    <category>
         <pattern>*</pattern>
         <template>
             I don't understand!
