@@ -1,3 +1,6 @@
+import base64
+import hashlib
+
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
@@ -40,10 +43,9 @@ class ChatBot:
     def __init__(self, request):
         self.kernel = aiml.Kernel()
         self.learn(request)
+        self.request = request
 
     def learn(self, request):
-        # request.session['categories'] = ['test.xml']
-        # del request.session['categories']
         if not request.session.get('categories'):
             request.session['categories'] = ['test.xml']
         categories = request.session['categories']
@@ -51,7 +53,18 @@ class ChatBot:
             self.kernel.learn(os.path.join("IA_APP\\aiml", i))
 
     def reply(self, text):
-        bot_response = self.kernel.respond(text)
+        if not self.request.session.get('asked_questions'):
+            self.request.session['asked_questions'] = {}
+        hashed = self.request.session['asked_questions']
+        hash = base64.b64encode(hashlib.md5(text.encode('utf-8')).digest()).decode()
+        print (hash)
+        if hash in hashed.keys():
+            self.kernel.learn('IA_APP\\aiml\\dejavu.xml')
+            bot_response = self.kernel.respond('dejavu') + '\n' + self.kernel.respond(text)
+        else:
+            hashed[hash] = True
+            bot_response = self.kernel.respond(text)
+        self.request.session['asked_questions'] = hashed
         return bot_response
 
 
