@@ -46,8 +46,7 @@ function getCategories(callback) {
 }
 
 function checkCategory(id){
-  let category=document.querySelector('#'+id);
-  setCategory(document.getElementById(id));
+    let category=document.querySelector('#'+id);
   if(category.dataset.checked=="true"){
     category.style.background="#888";
     category.style.border="3px solid transparent";
@@ -62,59 +61,15 @@ function checkCategory(id){
   }
 }
 
-var active_categories;
-getActiveCategories(function(result){
-  active_categories=JSON.parse(result).active_categories;
-
 
 var categories;
 getCategories(function(result){
 categories=result;
 var index=0;
 if(Object.keys(categories).length>0){
-    for (key in categories) { 
-      active='false';
-      active_class='';
-      for (ac in active_categories) {
-        if(active_categories[ac]==categories[key]+'.aiml'){
-          active='true';
-          active_class='active_class';
-          break;
-        }
-        }
-        document.getElementById('categories').innerHTML+="<div data-checked='"+active+"' id='cat_"+index+"' class='"+active_class+" category' onclick='checkCategory(this.id)' data-file='"+categories[key]+".aiml'>"+categories[key]+"</div>";
+    for (key in categories) {
+        document.getElementById('categories').innerHTML+="<div data-checked='false' id='cat_"+index+"' class='category' onclick='checkCategory(this.id)'>"+categories[key]+"</div>";
         index++;
 }
 }
 });
-console.log(active_categories.active_categories);
-});
-
-function setCategory(element) {
-  var file=element.dataset.file;
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      window.alert(JSON.parse(this.responseText).result);
-    }
-  };
-  xhttp.open("POST", "http://127.0.0.1:8000/toggle_category/", true);
-  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhttp.send("category="+file);
-}
-
-
-function getActiveCategories(callback) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-    var categories = JSON.parse(this.responseText);
-    return callback(this.responseText);
-    }
-  };
-  xhttp.open("GET", "get_active_categories", true);
-  xhttp.send();
-}
-
-
-
