@@ -9,6 +9,8 @@ import aiml
 import json
 import os
 import xml.etree.ElementTree as ET
+import Levenshtein
+sessionId = 12345
 def index(req):
     logged=req.COOKIES.get('logged', 'false')
     if logged=="true":
@@ -39,37 +41,67 @@ def logout(req):
     response.set_cookie('logged', 'false')
     return response
 
+
+def similarities(inp):
+    max_distance=int((30/100)*len(inp))
+    data=[]
+    min=100
+    str=""
+
+    for filename in os.listdir("IA_APP\\aiml"):
+        filepath = os.path.join("IA_APP\\aiml", filename)
+        if os.path.isfile(filepath):
+            root = ET.parse(filepath)
+            x = {}
+            for category in root.findall('category'):
+                pattern = category.find('pattern').text.strip()
+                data.append(pattern)
+
+    for index in data :
+        if Levenshtein.distance(index.upper(),inp.upper())<min:
+            min=Levenshtein.distance(index.upper(),inp.upper())
+            str=index
+    if min>max_distance:
+        str="I don't understand!"
+    return str
+
 class ChatBot:
     def __init__(self, request):
         self.kernel = aiml.Kernel()
         self.learn(request)
         self.request = request
 
+    # def learn(self, request):
+    #     if not request.session.get('categories'):
+    #         request.session['categories'] = ['test.xml']
+    #     categories = request.session['categories']
+    #     for i in categories:
+    #         self.kernel.learn(os.path.join("IA_APP\\aiml", i))
+
     def learn(self, request):
+        if request.session.get('sessionData'):
+            data = request.session['sessionData']
+            for key, value in data.items():
+                if key[0] != '_':
+                    self.kernel.setPredicate(key, value, sessionId)
+
         if not request.session.get('categories'):
             request.session['categories'] = ['test.xml']
         categories = request.session['categories']
         for i in categories:
             self.kernel.learn(os.path.join("IA_APP\\aiml", i))
 
-    # def reply(self, text):
-    #     # if not self.request.session.get('asked_questions'):
-    #         # self.request.session['asked_questions'] = {}
-    #     # hashed = self.request.session['asked_questions']
-    #     # hash = base64.b64encode(hashlib.md5(text.encode('utf-8')).digest()).decode()
-    #     # print (hash)
-    #     # if hash in hashed.keys():
-    #         # self.kernel.learn('IA_APP\\aiml\\dejavu.xml')
-    #         # bot_response = self.kernel.respond('dejavu') + '\n' + self.kernel.respond(text)
-    #     else:
-    #         # hashed[hash] = True
-    #         bot_response = self.kernel.respond(text)
-    #     # self.request.session['asked_questions'] = hashed
-    #     return bot_response
     def reply(self, text):
-        bot_response = self.kernel.respond(text)
-        return bot_response
-
+        bot_response = self.kernel.respond(text, sessionId)
+        self.request.session['sessionData'] = self.kernel.getSessionData(sessionId)
+        if bot_response=="I don't understand!":
+            if similarities(text)!="I don't understand!":
+                bot_response=self.kernel.respond(similarities(text), sessionId)
+            else:
+                bot_response=similarities(text)
+            return bot_response
+        else:
+            return bot_response
 
 def bot_response(request):
     get_text = request.GET.get('text', '')

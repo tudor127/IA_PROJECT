@@ -3,7 +3,9 @@
     <pattern>TELL ME A CAR BRAND</pattern>
   <template>
       <random>
-        <li>Honda ciuvic</li>
+        <li>BMW</li>
+      <li>RENAULT</li>
+      <li>DACIA</li>
       </random>
     </template>
   </category>

@@ -160,10 +160,6 @@
 </random></template>
 </category>
 
-<category>
-<pattern>_</pattern>
-<that>010011010101100111011</that>
-<template>Well computers think it's a funny joke.</template>
-</category>
+
 
 </aiml>

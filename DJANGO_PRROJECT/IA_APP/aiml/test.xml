@@ -3,7 +3,10 @@
     <category>
         <pattern>HELLO</pattern>
         <template>
-            Well, hello!
+            <random>
+                <li>Well, hello!</li>
+                <li>Hello , what is your name?</li>
+            </random>
         </template>
     </category>
     <category>
@@ -13,17 +16,27 @@
         </template>
     </category>
     <category>
-        <pattern>OK</pattern>
+        <pattern>THANK YOU</pattern>
         <template>
-            no!
+            You're welcome!
         </template>
     </category>
-
+    <category>
+        <pattern>GOODBYE</pattern>
+        <template>
+            Goodbye!
+        </template>
+    </category>
+    <category>
+        <pattern>MY NAME IS *</pattern>
+        <template>Nice to meet you , <set name="name"><star/></set>!</template>
+    </category>
+    <category>
+        <pattern>WHAT IS MY NAME</pattern>
+        <template> Your name is <get name="name"/>.</template>
+    </category>
     <category>
         <pattern>*</pattern>
-        <template>
-            I don't understand!
-        </template>
+        <template>I don't understand!</template>
     </category>
-
 </aiml>

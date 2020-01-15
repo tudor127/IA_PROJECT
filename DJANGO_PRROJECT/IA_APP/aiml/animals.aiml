@@ -1,6 +1,6 @@
 <aiml encoding="utf-8" version="1.0">
   <category>
-    <pattern>WHAT IS YOU FAVORITE ANIMAL</pattern>
+    <pattern>WHAT IS YOU FAVORITE [A|B]NIMAL</pattern>
   <template>
       <random>
         <li>horse</li>
