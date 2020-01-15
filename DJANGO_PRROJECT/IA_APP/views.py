@@ -35,50 +35,17 @@ def logout(req):
     return response
 
 class ChatBot:
-    def __init__(self, request):
-        self.kernel = aiml.Kernel()
-        self.learn(request)
-
-    def learn(self, request):
-        if not request.session.get('categories'):
-            request.session['categories'] = ['test.xml']
-        categories = request.session['categories']
-        for i in categories:
-            self.kernel.learn(os.path.join("IA_APP\\aiml", i))
-
-    def reply(self, text):
-        bot_response = self.kernel.respond(text)
+    def reply(self,text):
+        kernel = aiml.Kernel()
+        kernel.learn("IA_APP/aiml/test.xml")
+        bot_response = kernel.respond(text)
         return bot_response
 
-
 def bot_response(request):
-    text = request.GET.get('text', '')
-
-    bot = ChatBot(request)
-
-    result = bot.reply(text)
-
-    return JsonResponse({'reply': result})
-
-
-def toggle_category(request):
-    if request.method == 'POST':
-        print (request.session['categories'])
-        category = request.POST.get('category', '')
-        if os.path.isfile('IA_APP//aiml//' + category):
-            if not request.session.get('categories'):
-                request.session['categories'] = ['test.xml']
-            l = request.session['categories']
-            if category in request.session['categories']:
-                l.remove(category)
-            else:
-                l.append(category)
-            request.session['categories'] = l
-            print (request.session['categories'])
-            # return JsonResponse(dict(zip([str(x) for x in range(len(request.session['categories']))], request.session['categories'])))
-            return JsonResponse({'result': 'success'})
-        else:
-            return JsonResponse({'result': 'file_not_found'})
+    text=request.GET.get('text', '')
+    bot=ChatBot()
+    result=bot.reply(text)
+    return JsonResponse({'reply':result})
 
 
 def get_category(request):
@@ -92,25 +59,21 @@ def get_category(request):
 
 def get_aiml(request):
     filename = request.GET.get('file', '')
-    filepath = os.path.join("IA_APP\\aiml", filename)
-    if os.path.isfile(filepath):
-        root = ET.parse(filepath)
-        x = {}
-        for category in root.findall('category'):
-            pattern = category.find('pattern').text.strip()
-            if not list(category.find('template')):
-                template = category.find('template').text.strip()
-            # x += pattern + " : " + template + "<br>"
-            else:
-                variante = []
-                for el in category.find('template')[0]:
-                    variante.append(el.text.strip())
-                template = variante
-            x[pattern] = template
-        return JsonResponse(x)
-    else:
-        return JsonResponse({})
-
+    root = ET.parse(os.path.join("IA_APP\\aiml",filename))
+    x = {}
+    for category in root.findall('category'):
+        pattern = category.find('pattern').text.strip()
+        if not list(category.find('template')):
+            template = category.find('template').text.strip()
+        # x += pattern + " : " + template + "<br>"
+        else:
+            variante = []
+            for el in category.find('template')[0]:
+                print (el.text.strip())
+                variante.append(el.text.strip())
+            template = variante
+        x[pattern] = template
+    return JsonResponse(x)
 
 def administration(request):
     logged=request.COOKIES.get('logged', 'false')

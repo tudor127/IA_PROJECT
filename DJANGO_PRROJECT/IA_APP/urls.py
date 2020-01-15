@@ -8,6 +8,5 @@ urlpatterns=[
     path('get_aiml/',views.get_aiml),
     path('administration/',views.administration ),
     path('login/', views.login),
-    path('logout/', views.logout),
-    path('toggle_category/',views.toggle_category)
+    path('logout/', views.logout)
 ]
