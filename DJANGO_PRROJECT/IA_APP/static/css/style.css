@@ -89,6 +89,15 @@ color:
 #fff;
 cursor:pointer;
 }
+#categoryBox{
+    width: 1000px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 325px;
+    margin-top: 20px;
+    height: 90%;
+    }
 
 #loginBox .error{
     width: 90%;
@@ -108,6 +117,75 @@ color:
 font-weight: bold;
 font-size: 16px;
 }
+
+.cat_content{
+    width: 960px;
+    height: 86%;
+    /* margin-top: 2%; */
+    margin: 1% auto;
+    overflow: auto;
+    display: none;
+    /* margin-top: 3%; */
+    background: #eee;
+    /* padding-top: 20px; */
+    padding: 20PX;
+    BOX-SIZING: BORDER-BOX;
+    border-radius: 10px;
+}
+
+.save-btn{
+display:none;
+}
+.save-btn:nth-of-type(1){
+display:block;
+}
+.save-btn{
+position: absolute;
+bottom: 14px;
+right: 42px;
+padding: 7px 20px;
+background:
+rgb(31, 115, 183);
+color:
+#fff;
+border: 0px;
+border-radius: 5px;
+cursor: pointer;
+}
+.questionBox{
+width: 100%;
+margin: 10px auto;
+clear:both;
+    }
+ .questionBox label{
+     width: 30px;
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    height: 33px;
+    line-height: 34px;
+    }
+ .questionBox textarea{
+     width: 865px;
+    resize: vertical;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+height: 40px;
+    }
+
+.cat_content:nth-of-type(1){
+display:block;
+}
+
+#categoryTitle{
+    margin: 7px auto;
+    text-align: center;
+    font-size: 24px;
+    text-transform: capitalize;
+    }
 
 .messagesBox{
 width: 100%;
@@ -190,11 +268,12 @@ background:
 #fff;
 border-radius: 16px;
 margin-top: 1.8%;
-max-height: 100%;
+max-height: 94%;
 overflow: auto;
 padding-bottom: 10px;
 
 }
+
 
 .content{
 	width: 853px;
@@ -204,6 +283,14 @@ padding-bottom: 10px;
 	padding-left: 250px;
 
 }
+
+.addResponseBtn{
+float: right;
+    margin-right: 25px;
+    clear: both;
+    display: block;
+    margin-bottom:5px;
+    }
 
 .category{
 	box-sizing: border-box;
@@ -277,4 +364,10 @@ margin-bottom: 0px;
 /* Handle on hover */
 .chatBox::-webkit-scrollbar-thumb:hover {
   background: rgb(31, 115, 183);
-} 
+}
+
+.active_class{
+    background:#41ac8e;
+    border:3px dotted #16dcf1;
+    opacity:1;
+}

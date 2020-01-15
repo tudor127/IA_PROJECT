@@ -1,0 +1,19 @@
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>DO YOU LIKE CARROTS</pattern>
+  <template>
+      <random>
+        <li>no</li>
+      <li>yes,of course</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>DO YOU LIKE TOMATES</pattern>
+  <template>
+      <random>
+        <li>i love them !</li>
+      </random>
+    </template>
+  </category>
+</aiml>
