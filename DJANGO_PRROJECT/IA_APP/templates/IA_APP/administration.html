@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aiml Chatbot</title>
+	{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}/>
+<link rel="stylesheet" type="text/css" href={% static "css/administration.css" %}/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src={% static "js/admin.js" %}></script>
+	<script type="text/javascript">
+function showCD(id,value,key){
+var cats=document.getElementsByClassName('cat_content');
+var btns=document.getElementsByClassName('save-btn');
+
+for(var j=0;j<btns.length;j++){
+if(btns[j].id!=('save_btn_'+key)){
+btns[j].style.display='none';
+}
+else{
+btns[j].style.display='block';
+}
+}
+for(var i=0;i<cats.length;i++){
+if(cats[i].id!=id){
+cats[i].style.display='none';
+}
+else{
+cats[i].style.display='block';
+document.getElementById('categoryTitle').innerHTML=value;
+
+}
+}
+}
+</script>
+
+</head>
+<body>
+	<div class="topBar">
+		<div class="logo"><a href="/" >Aiml ChatBot</a></div>
+		<div class="logOut"><a href="/logout" ><button>Logout</button></a></div>
+	</div>
+	<div class="templatesBox" >
+		<div class="templateTitle">
+			<div class="title">Templates</div>
+		</div>
+		<div id="templatesBox">
+		<div class="templateBox" id="template_plus"   onclick="showCD('cd_plus','Add new template','plus')" ><img src={% static "img/plus.png" %} data-file=""></div>
+			{% if categories %}
+			{% for key,value in categories.items %}
+			<div class="templateBox" onclick="showCD('cd_{{key}}','{{value}}','{{key}}')" id="template_{{key}}" data-file="{{value}}.aiml"><div class="templateName">{{value}}</div></div>
+			{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<div id="categoryBox">
+			<h1 id="categoryTitle">Add new template</h1>
+			<div  class="cat_content" id="cd_plus" data-key="plus">
+					<input type="text" id="new_template_title" placeholder="Template's title" autocomplete="off" onkeyup="document.getElementById('template_plus').dataset.file=this.value+'.aiml';" />
+					<div class="questionBox">
+					<label>Q:</label><textarea rows="1" autocomplete="off" placeholder="Insert question..." class="questionInput"></textarea><br>
+                    <label>R:</label><textarea placeholder="Insert response..."  class="responseInput" autocomplete="off"></textarea><br>
+                    <button onclick="addResponse(this.parentNode,this)" class="addResponseBtn">+Add response</button>
+				</div>
+				<button onclick="addQuestion(this.parentNode,this)" class="addResponseBtn">+Add question</button>
+			</div>
+			 <button class="save-btn" id="save_btn_plus"  onclick="saveAiml('cd_plus')">save</button>
+			{% for key,value in category.items %}
+			<div  class="cat_content" id="cd_{{key}}" data-key="{{key}}">
+				{% for question,answer in value.items %}
+				<div class="questionBox">
+					<label>Q:</label><textarea rows="1" autocomplete="off" placeholder="Insert question..." class="questionInput">{{question}}</textarea><br>
+                    {% if answer %}
+                    {% for el in answer %}
+                    <label>R:</label><textarea autocomplete="off" placeholder="Insert response..."  class="responseInput">{{el}}</textarea><br>
+                    {% endfor %}
+                    {% endif %}
+                    <button onclick="addResponse(this.parentNode,this)" class="addResponseBtn">+Add response</button>
+				</div>
+				{%endfor%}
+				<button onclick="addQuestion(this.parentNode,this)" class="addResponseBtn">+Add question</button>
+			</div>
+			{% endfor %}
+            {% for key,value in category.items %}
+            <button class="save-btn" id="save_btn_{{key}}"  onclick="saveAiml('cd_{{key}}')">save</button>
+            {% endfor %}
+	</div>
+<script type="text/javascript">
+function parseAiml(cd_id){
+	var cat=document.getElementById(cd_id);
+	var questions=cat.getElementsByClassName('questionBox');
+	var aiml={};
+	for (var i=0;i<questions.length;i++){
+		question=questions[i].getElementsByClassName('questionInput')[0].value.toUpperCase();
+		question=question.replace("?", "");
+		question=question.replace("!", "");
+		question=question.replace(".", "");
+		if(question.trim()!=''){
+		answers=[];
+		answs=questions[i].getElementsByClassName('responseInput');
+		for(var j=0;j<answs.length;j++){
+			if(answs[j].value.trim()!='')
+			answers.push(answs[j].value);
+		}
+		aiml[question]=answers;
+       }
+	}
+	return aiml;
+}
+
+
+function saveAiml(cd_id) {
+	var aiml=parseAiml(cd_id);
+    var key=document.getElementById(cd_id).dataset.key;
+	var file_name=document.getElementById('template_'+key).dataset.file;
+  	var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      window.alert(JSON.parse(this.responseText).result);
+    }
+  };
+  xhttp.open("POST", "http://127.0.0.1:8000/edit_aiml/", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("file="+file_name+"&json="+JSON.stringify(aiml));
+  // console.log(aiml);
+}
+
+function addResponse(parent,el){
+	let newNode = document.createElement("textarea");
+	let newLabel = document.createElement("label");
+	let newBr = document.createElement("br");
+	newNode.placeholder='Insert response...';
+	newLabel.innerHTML="R";
+	newNode.classList.add('responseInput');
+	parent.insertBefore(newNode, el);
+	parent.insertBefore(newBr,el);
+	parent.insertBefore(newLabel,newNode);
+}
+
+function addQuestion(parent,el){
+	let newNode = document.createElement("div");
+	newNode.classList.add('questionBox');
+	newNode.innerHTML=`<div class="questionBox">
+					<label>Q:</label><textarea rows="1" class="questionInput" placeholder="Insert question..."></textarea><br>
+                    <label>R:</label><textarea class="responseInput" placeholder="Insert response..."></textarea><br>
+                    <button onclick="addResponse(this.parentNode,this)" class="addResponseBtn">+Add response</button>
+				</div>`;
+	parent.insertBefore(newNode, el);
+	parent.insertBefore(newBr,el);
+	parent.insertBefore(newLabel,newNode);
+}
+
+</script>
+</body>
+</html>

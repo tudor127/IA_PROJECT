@@ -1,0 +1,373 @@
+html, body
+{
+    height: 96%;
+    background: #ddd;
+}
+
+*{
+	font-family: Arial;
+}
+
+.chatBox
+{
+height: 95%;
+width: 600px;
+margin: 0px auto;
+float: left;
+margin-top: 0px;
+display: block;
+border: 1px solid
+#aaa;
+border-radius: 16px;
+margin-top: 1.8%;
+overflow: hidden;
+background:
+#fff;
+margin-right: 10px;
+}
+
+#loginBox{
+width: 300px;
+
+background:
+#fff;
+
+min-height: 160px;
+
+border-radius: 20px;
+
+padding: 20px;
+
+margin-top: 100px;
+
+margin-left: auto;
+
+margin-right: auto;
+
+display: block;}
+
+#loginBox input{
+width: 80%;
+
+padding: 6px;
+
+border-radius: 5px;
+
+border: 1px solid
+#aaa;
+
+background:
+#eee;
+
+color:
+#000;
+
+margin: 15px auto;
+
+display: block;
+}
+
+#loginBox button{
+width: 100px;
+
+clear: both;
+
+display: block;
+
+padding: 8px;
+
+margin: 15px auto;
+
+border-radius: 5px;
+
+border: 0px;
+
+background:
+rgb(31, 115, 183);
+
+color:
+#fff;
+cursor:pointer;
+}
+#categoryBox{
+    width: 1000px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 325px;
+    margin-top: 20px;
+    height: 90%;
+    }
+
+#loginBox .error{
+    width: 90%;
+    text-align: center;
+    margin: 10px auto;
+    color:
+#a71f1f;}
+.top{
+width: 100%;
+background:
+rgb(31, 115, 183);
+height: 6.4%;
+text-align: center;
+line-height: 40px;
+color:
+#fff;
+font-weight: bold;
+font-size: 16px;
+}
+
+.cat_content{
+    width: 960px;
+    height: 86%;
+    /* margin-top: 2%; */
+    margin: 1% auto;
+    overflow: auto;
+    display: none;
+    /* margin-top: 3%; */
+    background: #eee;
+    /* padding-top: 20px; */
+    padding: 20PX;
+    BOX-SIZING: BORDER-BOX;
+    border-radius: 10px;
+}
+
+.save-btn{
+display:none;
+}
+.save-btn:nth-of-type(1){
+display:block;
+}
+.save-btn{
+position: absolute;
+bottom: 14px;
+right: 42px;
+padding: 7px 20px;
+background:
+rgb(31, 115, 183);
+color:
+#fff;
+border: 0px;
+border-radius: 5px;
+cursor: pointer;
+}
+.questionBox{
+width: 100%;
+margin: 10px auto;
+clear:both;
+    }
+ .questionBox label{
+     width: 30px;
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    height: 33px;
+    line-height: 34px;
+    }
+ .questionBox textarea{
+     width: 865px;
+    resize: vertical;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+height: 40px;
+    }
+
+.cat_content:nth-of-type(1){
+display:block;
+}
+
+#categoryTitle{
+    margin: 7px auto;
+    text-align: center;
+    font-size: 24px;
+    text-transform: capitalize;
+    }
+
+.messagesBox{
+width: 100%;
+height: 78%;
+display: block;
+overflow-y: scroll;
+padding: 20px 0px;
+box-sizing: border-box;
+margin-bottom: 3%;
+
+}
+
+.messageInput{
+	height: 14%;
+	width: 100%;
+	display: block;
+}
+
+#messageInput{
+width: 93%;
+margin: 0px auto;
+    margin-top: 0px;
+display: block;
+height: 70%;
+margin-top: 0%;
+border-radius: 5px;
+border: 1px solid
+#aaa;
+padding: 10px;
+box-sizing: border-box;
+resize: none;
+max-height: 60px;
+}
+
+.userMessage{
+min-width: 3%;
+max-width: 70%;
+clear: both;
+display: block;
+float: right;
+background:
+rgb(31, 115, 183);
+border-radius: 20px;
+padding: 9px 15px;
+min-height: 20px;
+margin: 2px 8px;
+color:
+#fff;
+font-family: Arial;
+font-size: 15px;
+word-break: break-all;
+
+}
+
+.botMessage{
+	min-width: 3%;
+max-width: 70%;
+clear: both;
+display: block;
+float: left;
+background:
+#f1f1f1;
+color:
+#777;
+border-radius: 20px;
+padding: 9px 15px;
+min-height: 20px;
+margin: 2px 8px;
+font-family: Arial;
+font-size: 15px;
+word-break: break-all;
+}
+
+#categories{
+width: 240px;
+float: left;
+min-height: 100px;
+display: block;
+background:
+#fff;
+border-radius: 16px;
+margin-top: 1.8%;
+max-height: 94%;
+overflow: auto;
+padding-bottom: 10px;
+
+}
+
+
+.content{
+	width: 853px;
+	margin: 0px auto;
+	display: block;
+	height: 100%;
+	padding-left: 250px;
+
+}
+
+.addResponseBtn{
+float: right;
+    margin-right: 25px;
+    clear: both;
+    display: block;
+    margin-bottom:5px;
+    }
+
+.category{
+	box-sizing: border-box;
+	width: 92%;
+min-height: 30px;
+padding: 5px 10px;
+box-sizing: border-box;
+line-height: 20px;
+border: 1px solid;
+margin: 0px auto;
+    margin-top: 0px;
+border-radius: 10px;
+margin: 10px auto;
+margin-top: 6px;
+color:
+#fff;
+font-size: 15px;
+text-transform: uppercase;
+text-align: center;
+cursor: pointer;
+background: #888;
+opacity: .45;
+border:3px solid transparent;
+transition-duration: .2s;
+}
+
+.category:hover{
+background: #41ac8e;
+border:3px dotted #16dcf1;
+opacity: 1;
+}
+
+#categories h1{
+width: 100%;
+text-align: center;
+color:
+#fff;
+font-size: 16px;
+margin-top: 0.2px;
+border-bottom: 1px solid;
+padding-bottom: 5px;
+height: 6.2%;
+padding: 11.6px 0px;
+    padding-right: 0px;
+padding-right: 0px;
+line-height: 18.5px;
+background:
+rgb(32, 177, 136) none repeat scroll 0% 0%;
+margin-left: -1px;
+padding-right: 1px;
+border-radius: 0px 16px 0px 0px;
+margin-bottom: 0px;
+
+}
+
+ /* width */
+.chatBox::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.chatBox::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+/* Handle */
+.chatBox::-webkit-scrollbar-thumb {
+  background:rgb(111, 160, 200) ;
+}
+
+/* Handle on hover */
+.chatBox::-webkit-scrollbar-thumb:hover {
+  background: rgb(31, 115, 183);
+}
+
+.active_class{
+    background:#41ac8e;
+    border:3px dotted #16dcf1;
+    opacity:1;
+}

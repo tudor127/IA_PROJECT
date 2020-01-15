@@ -1,0 +1,36 @@
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>HELLO</pattern>
+  <template>
+      <random>
+        <li>well hello</li>
+      <li>heey</li>
+      <li>hello!!</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>HOW ARE YOU</pattern>
+  <template>
+      <random>
+        <li>i'm fine!!</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>ASK ME A QUESTION</pattern>
+  <template>
+      <random>
+        <li>what is your favorite book?</li>
+      </random>
+    </template>
+  </category>
+<category>
+    <pattern>OK</pattern>
+  <template>
+      <random>
+        <li>fine</li>
+      </random>
+    </template>
+  </category>
+</aiml>

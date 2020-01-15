@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aiml Chatbot</title>
+	{% load static %}
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}>
+<link rel="stylesheet" type="text/css" href={% static "css/administration.css" %}>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="topBar">
+		<div class="logo"><a href="/"> Aiml ChatBot </a> </div>
+		{% if logged %}
+		<div class="logOut" style="width:160px"><a href="/administration" style="float: left;line-height: 35px;margin-right: 15px;">Admin</a><a href="/logout"><button>Logout</button></a></div></div>
+		{% else %}
+		<div class="logOut"><a href="/login"><button>Login</button></a></div></div>
+	    {% endif %}
+	</div>
+  <div class="content">
+	<div class="chatBox">
+		<div class="top">ChatBot</div>
+		<div class="messagesBox" id="messagesBox"></div>
+		<div class="messageInput">
+			<form method="post">
+			<textarea type="text" name="message" placeholder="Type a message here..." id="messageInput" rows="2"></textarea>
+			</form>
+		</div>
+	</div>
+	<div id="categories">
+		<h1>Topics</h1>
+	</div>
+  </div>
+<script type="text/javascript" src={% static "js/javascript.js" %}></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+venv
+.idea/*
+DJANGO_PRROJECT/DJANGO_PRROJECT/__pycache__/*
+DJANGO_PRROJECT/IA_APP/__pycache__/*
+DJANGO_PRROJECT/IA_APP/migrations/__pycache__/*

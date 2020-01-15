@@ -1,0 +1,12 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat.aiml -->
+    <category>
+        <pattern>DEJAVU</pattern>
+        <template>
+            <random>
+                <li>We talked about this allready ! However i'll repeat .</li>
+            </random>
+        </template>
+    </category>
+
+</aiml>

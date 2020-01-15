@@ -1,0 +1,11 @@
+<aiml encoding="utf-8" version="1.0">
+  <category>
+    <pattern>HOW MANY LEGS HAS A DOG</pattern>
+  <template>
+      <random>
+        <li>4</li>
+      <li>i don't know</li>
+      </random>
+    </template>
+  </category>
+</aiml>
